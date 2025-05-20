@@ -16,6 +16,7 @@ public class Player {
 
     private ImageView sprite;
     private Image[] sprites;
+    private int currentFrame = 0;
 
     private static final double playerTaille = 40;
 
@@ -55,10 +56,18 @@ public class Player {
             posY = 0;
         }
     }
-    
+
+    /**
+     * Permet le changement de sprite
+     */
+    public void updateSprite() {
+        currentFrame = (currentFrame + 1) % sprites.length;
+        sprite.setImage(sprites[currentFrame]);
+    }
+
     /**
      * Guetter de l'attribut posX
-     * @return
+     * @return la position X
      */
     public double getPosX() {
         return posX;
@@ -66,7 +75,7 @@ public class Player {
 
     /**
      * Guetter de l'attribut posY
-     * @return
+     * @return la position Y
      */
     public double getPosY() {
         return posY;
